@@ -31,7 +31,7 @@ export default function Login() {
                 transition={{ duration: 0.8 }}
                 className="hidden lg:block lg:w-1/2 relative"
             >
-                <div className="absolute inset-0 bg-gradient-to-r from-indigo-400/50 to-indigo-300/20 z-10 mix-blend-multiply" />
+                <div className="absolute inset-0 bg-gradient-to-r to-indigo-500/20 from-slate-700/20 z-10 mix-blend-multiply" />
                 <div className="relative h-full w-full">
                     <Image
                         src="https://images.unsplash.com/vector-1756774242787-e9934676446b?q=80&w=580&auto=format&fit=crop"
@@ -44,13 +44,13 @@ export default function Login() {
                         initial={{ y: 50, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.5, duration: 0.8 }}
-                        className="absolute bottom-12 left-12 z-20 text-white "
+                        className="absolute bottom-7 left-12 z-20 text-white/75"
                     >
                         <h1 className="text-3xl font-bold mb-4">Welcome to</h1>
-                        <h2 className="text-5xl font-bold underline ">
+                        <h2 className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent text-5xl underline font-bold">
                             Pinpoint Bookmarks
                         </h2>
-                        <p className="text-xl mt-4 opacity-90">Where ideations are marked</p>
+                        <p className="text-xl text-black mt-4 opacity-90">Where ideations are marked</p>
                     </motion.div>
                 </div>
             </motion.div>
