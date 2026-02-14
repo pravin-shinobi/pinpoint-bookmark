@@ -28,7 +28,7 @@ export default function LandingPage() {
 
 
       {/* Hero Section - Split Design */}
-      <section className="pt-32 pb-16 lg:pb-20 px-6">
+      <section className="pt-32 pb-16 lg:pb-20 mx-4">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Left Content */}
@@ -42,53 +42,52 @@ export default function LandingPage() {
                 <BsStars className="w-4 h-4 mr-2" />
                 <span className="text-sm font-medium">The Smart Way to Bookmark</span>
               </div>
-              <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              <h1 className="text-3xl lg:text-5xl font-bold leading-tight mb-6">
                 Organize Your Digital
                 <span className="block bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                   World with Pinpoint
                 </span>
               </h1>
-              <p className="text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
+              <p className="text-base lg:text-xl text-gray-600 dark:text-gray-400 mb-8 max-w-lg">
                 Never lose an important webpage again. Pinpoint helps you save, organize, and rediscover your favorite content with intelligent bookmarking.
               </p>
               
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Button size="lg" className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity h-14 px-8 text-lg">
+                <Button size="lg" className="text-sm md:text-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity h-14 px-8">
                   Start Organizing Free
                 </Button>
-                <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-2 hover:bg-purple-50 dark:hover:bg-purple-900/20">
+                <Button size="lg" variant="outline" className="h-14 px-8 text-sm md:text-lg border-2 hover:bg-purple-50 dark:hover:bg-purple-900/20">
                   Watch Demo
                 </Button>
               </div>
 
               {/* Google Sign Up - Prominent but not overwhelming */}
-              <div className="relative">
+          { !user && <div className="relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
                 </div>
                 <div className="relative flex justify-start">
-                  <span className="bg-white dark:bg-gray-950 pr-4 text-sm text-gray-500">Or continue with</span>
+                  <span className="dark:bg-slate-500 dark:text-white rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-500">Or continue with</span>
                 </div>
-              </div>
+              </div>}
               
+              {user ? 
+
+              <Link href={'/dashboard'} className="text-sm md:text-base dark:text-gray-600 flex items-center gap-2 bg-slate-200 rounded mt-4 w-fit p-2">
+                <PlusCircle size={16}/> Create Online Bookmarks
+              </Link>
+              :
               <Button
                 variant="outline"
                 className="mt-4 h-12 px-6 text-base bg-white hover:bg-gray-50 border-2"
               >
-                {user ?
-                  <Link href={'/dashboard'} className="flex items-center gap-2">
-                    <PlusCircle /> Create Bookmarks
-                  </Link>
-                  :
-                  <>
-                    <Link href={'/login'} className="flex items-center gap-2">
+                    <Link href={'/login'} className="flex items-center gap-2 text-sm md:text-base">
                       <FcGoogle className="mr-3 h-5 w-5" />
                       Sign up with Google
                     </Link>
-                  </>
-                }
               </Button>
+                }
             </motion.div>
 
             {/* Right Content - Image/Visual */}
@@ -98,7 +97,7 @@ export default function LandingPage() {
               transition={{ duration: 0.8 }}
               className="flex-1 relative"
             >
-              <div className="hidden lg:block relative h-[500px]">
+              <div className="hidden lg:block relative h-[480px]">
                 {/* Main Dashboard Preview */}
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-indigo-600/10 rounded-3xl transform rotate-5 scale-105" />
                 <div className="absolute inset-0 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl overflow-hidden">
@@ -126,24 +125,22 @@ export default function LandingPage() {
         </div>
       </section>
 
-
-
       {/* Features Section */}
-      <section className="py-20 mx-3 bg-gray-50 dark:bg-gray-900/50">
-        <div className="lg:w-[90%] mx-auto">
+      <section className="lg:py-20 mx-3 bg-gray-50 dark:bg-gray-900/50">
+        <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold mb-4">
+            <h2 className="text-2xl lg:text-4xl font-bold mb-4">
               Everything You Need to
               <span className="block bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                 Master Your Bookmarks
               </span>
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-base lg:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Powerful features that make bookmarking actually useful, not just a list of links.
             </p>
           </motion.div>
@@ -196,13 +193,13 @@ export default function LandingPage() {
               transition={{ duration: 0.6 }}
               className="flex-1"
             >
-              <h2 className="text-4xl font-bold mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6">
                 Intelligent Organization,
                 <span className="block bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                   Zero Effort
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-6">
+              <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 mb-6">
                 Pinpoint automatically categorizes your bookmarks using AI, making it easy to find exactly what you need when you need it.
               </p>
               <ul className="space-y-4">
@@ -211,7 +208,7 @@ export default function LandingPage() {
                     <div className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mt-0.5">
                       <span className="text-green-600 dark:text-green-400 text-sm">✓</span>
                     </div>
-                    <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
+                    <span className="text-gray-700 dark:text-gray-300 text-base lg:text-lg">{benefit}</span>
                   </li>
                 ))}
               </ul>
@@ -221,15 +218,15 @@ export default function LandingPage() {
       </section>
 
       {/* Pricing/CTA Section */}
-      <section className="py-20 px-6 bg-gradient-to-r from-purple-600 to-indigo-600 text-white">
-        <div className="container mx-auto text-center">
+      <section className="w-[80%] lg:w-[85%] mx-auto mb-20 py-20 px-6 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg">
+        <div className=" text-center">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-4xl font-bold mb-4">Ready to Get Organized?</h2>
-            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Ready to Get Organized?</h2>
+            <p className="lg:text-xl mb-8 opacity-90 max-w-2xl mx-auto">
               Join thousands of users who've transformed how they save and discover content online.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -290,7 +287,7 @@ const benefits = [
   "AI automatically categorizes new bookmarks",
   "Full-text search of saved pages",
   "Collaborate with team members",
-  "Browser extensions for Chrome, Firefox, and Edge",
+  "Browser extensions",
   "Mobile apps for iOS and Android",
   "Export your data anytime"
 ];

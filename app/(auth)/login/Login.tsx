@@ -81,7 +81,7 @@ export default function Login() {
                             </CardTitle>
                         </motion.div>
                         <CardDescription className="text-base text-gray-600 dark:text-gray-400">
-                            Welcome back! Please sign in / sign up to continue
+                            Welcome back!<br/> Please sign in / sign up to continue
                         </CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-8 px-8 pb-8">
@@ -112,7 +112,7 @@ export default function Login() {
                             >
                                 <span className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-indigo-600/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 " />
                                 <FcGoogle className="mr-3 h-6 w-6 relative z-10" />
-                                <span className="relative z-10 text-sm">Continue with Google</span>
+                                <span className="relative z-10 text-sm dark:text-white">Continue with Google</span>
                             </Button>
                         </motion.div>
 
