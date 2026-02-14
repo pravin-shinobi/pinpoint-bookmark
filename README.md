@@ -24,3 +24,5 @@ Resolution: Created `bookmarkList` table manually with proper columns.
 Row Level Security ensures users cannot access other users' bookmarks.
 
 Tech Stack: Next.js 16, Supabase, PostgreSQL, TypeScript, Tailwind CSS.
+Documentations: Supabase docs for setup
+AI used : Deepseek for Animation designs and ChatGPT for contents & form structure
