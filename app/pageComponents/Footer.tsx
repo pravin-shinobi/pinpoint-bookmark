@@ -38,17 +38,22 @@ const Footer = () => {
                                 <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 flex items-center justify-center">
                                     <HiOutlineBookmark className="w-4 h-4 text-white" />
                                 </div>
-                                <span className="text-xl font-bold">Pinpoint</span>
+                                <span className="text-xl font-bold select-none">Pinpoint Bookmarks</span>
                             </div>
-                            <p className="text-gray-400 text-sm">Smart bookmarking for the modern web</p>
+                            <p className="text-gray-400 text-sm select-none">Smart bookmarking for the modern web</p>
                         </div>
                         {footerLinks.map((section, index) => (
                             <div key={index}>
-                                <h4 className="font-semibold mb-4">{section.title}</h4>
+                                <h4 className="font-semibold mb-4 select-none">{section.title}</h4>
                                 <ul className="space-y-2 text-gray-400">
                                     {section.links.map((link, linkIndex) => (
                                         <li key={linkIndex}>
-                                            <Link href="#" className="hover:text-white transition-colors">
+                                            <Link href="#"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    window.scrollTo({ top: 0, behavior: "smooth" });
+                                                }}
+                                            className="hover:text-white transition-colors">
                                                 {link}
                                             </Link>
                                         </li>
@@ -57,13 +62,16 @@ const Footer = () => {
                             </div>
                         ))}
                     </div>
-                    <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                    <div className="border-t select-none border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
                         © {new Date().getFullYear()} Pinpoint Bookmark. All rights reserved.
                     </div>
+                    <div className="text-center select-none text-gray-400 text-sm">
+                        Made by Pravin
+                </div>
                 </div>
             </footer>
         </div>
     )
 }
 
-export default Footer
+export default Footer;

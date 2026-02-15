@@ -34,6 +34,7 @@ export interface Bookmark extends BookmarkFormDataType {
 
 export default function BookmarksPage() {
   const supabase = createClient();
+  const router = useRouter();
   const { user } = useAuth();
   const [bookmarks, setBookmarks] = useState<Bookmark[]>([]);
   const [filteredBookmarks, setFilteredBookmarks] = useState<Bookmark[]>([]);
@@ -169,6 +170,9 @@ useEffect(() => {
             animate={{ x: 0, opacity: 1 }}
             className="text-3xl font-bold"
           >
+            <button title="Back" onClick={()=>router.back()} className="hover:text-purple-500 duration-200 m-2 cursor-pointer" aria-label="Back Button">
+             {"<"}
+            </button>
             My Bookmarks
             <span className="ml-2 text-sm font-normal text-gray-500">
               ({filteredBookmarks.length + ` item${filteredBookmarks.length > 1 ? "s" : ""}`})

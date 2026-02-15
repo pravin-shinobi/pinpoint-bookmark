@@ -18,14 +18,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { useAuth } from "@/hooks/useAuth";
 import { PlusCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast, Toaster } from "sonner";
 
 export default function LandingPage() {
 
   const {user} = useAuth();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white dark:from-gray-950 dark:to-gray-900">
-
+      <Toaster/>
 
       {/* Hero Section - Split Design */}
       <section className="pt-32 pb-16 lg:pb-20 mx-4">
@@ -36,9 +39,9 @@ export default function LandingPage() {
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="flex-1 text-left"
+              className="flex-1 text-left select-none"
             >
-              <div className="inline-flex items-center px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full text-purple-600 dark:text-purple-400 mb-6">
+              <div className="inline-flex items-center select-none px-4 py-2 bg-purple-100 dark:bg-purple-900/30 rounded-full text-purple-600 dark:text-purple-400 mb-6">
                 <BsStars className="w-4 h-4 mr-2" />
                 <span className="text-sm font-medium">The Smart Way to Bookmark</span>
               </div>
@@ -52,12 +55,18 @@ export default function LandingPage() {
                 Never lose an important webpage again. Pinpoint helps you save, organize, and rediscover your favorite content with intelligent bookmarking.
               </p>
               
-              {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Button size="lg" className="text-sm md:text-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity h-14 px-8">
+                <Button onClick={()=>{
+                  if(user){
+                    router.push('/dashboard')
+                  }else{
+                    toast.info("Sign up for proceeding further",{position:"bottom-right"})
+                    router.push('/login')
+                  }
+                }} size="lg" className="text-sm md:text-lg cursor-pointer bg-gradient-to-r from-purple-600 to-indigo-600 text-white hover:opacity-90 transition-opacity h-14 px-8">
                   Start Organizing Free
                 </Button>
-                <Button size="lg" variant="outline" className="h-14 px-8 text-sm md:text-lg border-2 hover:bg-purple-50 dark:hover:bg-purple-900/20">
+                <Button size="lg" onClick={()=>toast.info("Start creating bookmarks",{style:{background:"#000",color:"#fff"}})} variant="outline" className="cursor-pointer h-14 px-8 text-sm md:text-lg border-2 hover:bg-purple-50 dark:hover:bg-purple-900/20">
                   Watch Demo
                 </Button>
               </div>
@@ -74,8 +83,8 @@ export default function LandingPage() {
               
               {user ? 
 
-              <Link href={'/dashboard'} className="text-sm md:text-base dark:text-gray-600 flex items-center gap-2 bg-slate-200 rounded mt-4 w-fit p-2">
-                <PlusCircle size={16}/> Create Online Bookmarks
+              <Link href={'/dashboard'} className="text-sm md:text-base hover:bg-indigo-100 duration-200 dark:text-gray-600 flex items-center gap-2 bg-slate-200 rounded mt-4 w-fit p-2">
+                <PlusCircle size={16}/> Create Bookmarks
               </Link>
               :
               <Button
@@ -132,7 +141,7 @@ export default function LandingPage() {
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-16 select-none"
           >
             <h2 className="text-2xl lg:text-4xl font-bold mb-4">
               Everything You Need to
@@ -145,7 +154,7 @@ export default function LandingPage() {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 select-none">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -191,7 +200,7 @@ export default function LandingPage() {
               initial={{ x: 30, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
-              className="flex-1"
+              className="flex-1 select-none"
             >
               <h2 className="text-3xl lg:text-4xl font-bold mb-6">
                 Intelligent Organization,
@@ -219,7 +228,7 @@ export default function LandingPage() {
 
       {/* Pricing/CTA Section */}
       <section className="w-[80%] lg:w-[85%] mx-auto mb-20 py-20 px-6 bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg">
-        <div className=" text-center">
+        <div className=" text-center select-none">
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
@@ -230,7 +239,7 @@ export default function LandingPage() {
               Join thousands of users who've transformed how they save and discover content online.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 text-sm h-14 px-8">
+              <Button size="lg" className="bg-white cursor-not-allowed text-purple-600 hover:bg-gray-100 text-sm h-14 px-8">
                 Start Free Trial
               </Button>
               <Link href={'/login'}>

@@ -14,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {useIsMobile} from "@/hooks/use-mobile";
 
 interface BookmarkCardProps {
   bookmark: Bookmark;
@@ -24,6 +25,8 @@ interface BookmarkCardProps {
 export function BookmarkCard({ bookmark, onEdit, onDelete }: BookmarkCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const isMobileView = useIsMobile();
+
   
   const handleDelete = async () => {
     setIsDeleting(true);
@@ -76,7 +79,7 @@ export function BookmarkCard({ bookmark, onEdit, onDelete }: BookmarkCardProps) 
             
             {/* Action Buttons - Visible on hover */}
             <AnimatePresence>
-              {isHovered && (
+              {(isHovered || isMobileView) && (
                 <motion.div 
                   initial={{ opacity: 0, x: 10 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -86,7 +89,7 @@ export function BookmarkCard({ bookmark, onEdit, onDelete }: BookmarkCardProps) 
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-8 w-8 bg-white dark:bg-gray-800 shadow-md hover:bg-purple-50 dark:hover:bg-purple-900/20"
+                    className="h-8 w-8 bg-white cursor-pointer dark:bg-gray-800 shadow-md hover:bg-purple-50 dark:hover:bg-purple-900/20"
                     onClick={() => onEdit(bookmark)}
                   >
                     <HiOutlinePencil className="h-4 w-4 text-purple-600" />
@@ -94,7 +97,7 @@ export function BookmarkCard({ bookmark, onEdit, onDelete }: BookmarkCardProps) 
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-8 w-8 bg-white dark:bg-gray-800 shadow-md hover:bg-red-50 dark:hover:bg-red-900/20"
+                    className="h-8 w-8 bg-white  cursor-pointer dark:bg-gray-800 shadow-md hover:bg-red-50 dark:hover:bg-red-900/20"
                     onClick={handleDelete}
                     disabled={isDeleting}
                   >

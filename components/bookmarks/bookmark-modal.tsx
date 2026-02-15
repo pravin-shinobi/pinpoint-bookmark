@@ -91,7 +91,7 @@ export function BookmarkModal({
         </DialogHeader>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-4">
+          <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
             <FormField
               control={form.control}
               name="title"
@@ -99,8 +99,8 @@ export function BookmarkModal({
                 <FormItem>
                   <FormLabel>Title</FormLabel>
                   <FormControl>
-                    <Input 
-                      placeholder="Enter bookmark title" 
+                    <Input autoFocus={false}
+                     placeholder="Enter bookmark title" 
                       {...field} 
                       className="focus:border-purple-500"
                     />
@@ -119,7 +119,7 @@ export function BookmarkModal({
                   <FormControl>
                     <Input 
                       placeholder="https://example.com" 
-                      {...field} 
+                      {...field}  autoFocus={false}
                       className="focus:border-purple-500"
                     />
                   </FormControl>
@@ -135,7 +135,7 @@ export function BookmarkModal({
                 <FormItem>
                   <FormLabel>Description (Optional)</FormLabel>
                   <FormControl>
-                    <Textarea 
+                    <Textarea autoFocus={false}
                       placeholder="Add a description..." 
                       {...field} 
                       className="focus:border-purple-500 resize-none"
